@@ -1,0 +1,43 @@
+### **0-simple_web_stack**
+
+#### **Task Description**
+Design a one-server web infrastructure that hosts the website reachable via `www.foobar.com`.
+
+---
+
+### **Whiteboard Diagram**
+[Insert the link to the diagram hosted on an image hosting service, e.g., Imgur]
+
+---
+
+### **Infrastructure Description**
+
+1. **Server**: A single physical or virtual machine with IP `8.8.8.8`.
+
+2. **Domain Name**:  
+   - `foobar.com` configured with a `www` **A record** pointing to `8.8.8.8`.
+
+3. **Web Server**:  
+   - **Software:** Nginx.  
+   - **Role:**  
+     - Handles HTTP/HTTPS requests.  
+     - Serves static content.  
+     - Forwards dynamic requests to the application server.
+
+4. **Application Server**:  
+   - **Role:** Executes dynamic code (business logic) and interacts with the database.
+
+5. **Database**:  
+   - **Software:** MySQL.  
+   - **Role:** Stores and organizes application data.
+
+6. **Communication Protocol**:  
+   - HTTP/HTTPS between user’s browser and the web server.
+
+---
+
+### **Issues with the Infrastructure**
+
+1. **Single Point of Failure (SPOF):** If the server crashes, the entire system is unavailable.  
+2. **Maintenance Downtime:** During updates or restarts, the site goes offline.  
+3. **Scalability Limitations:** A single server cannot handle high traffic or scale effectively.

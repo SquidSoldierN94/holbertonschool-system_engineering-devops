@@ -1,0 +1,74 @@
+### **3-scale_up**
+
+#### **Task Description**
+Design a scaled-up web infrastructure for `www.foobar.com` with the following elements:
+
+1. A load balancer configured as a cluster.
+2. Servers dedicated to specific roles:
+   - Web server (Nginx).
+   - Application server.
+   - Database server (MySQL).
+
+---
+
+### **Whiteboard Diagram**
+[Insert the link to the diagram hosted on an image hosting service, e.g., Imgur]
+
+---
+
+### **Infrastructure Description**
+
+1. **Load Balancer:**
+   - **Purpose:** Distributes incoming traffic across multiple servers to ensure high availability and scalability.
+   - **Configuration:** Set up in a clustered environment for redundancy. If one load balancer fails, the other can handle the traffic.
+   - **Reason for Adding:**
+     - Avoid single points of failure (SPOF).
+     - Balance traffic to ensure optimal resource usage and prevent overloading.
+
+2. **Dedicated Servers:**
+   - **Web Server (Nginx):**
+     - **Purpose:** Handles static files (e.g., HTML, CSS, JavaScript) and forwards requests to the application server.
+     - **Reason for Adding:** Separation of concerns improves performance and maintainability.
+   - **Application Server:**
+     - **Purpose:** Executes the business logic and serves dynamic content based on the application's code base.
+     - **Reason for Adding:** Offloads processing from the web server and focuses on dynamic request handling.
+   - **Database Server (MySQL):**
+     - **Purpose:** Stores application data and ensures data integrity.
+     - **Reason for Adding:** Centralizes data storage and management.
+
+---
+
+### **Key Considerations**
+
+1. **Why Add a Clustered Load Balancer?**
+   - Ensures high availability by preventing a SPOF at the load balancer level.
+   - Improves scalability by distributing traffic effectively across multiple servers.
+
+2. **Why Split Components?**
+   - **Improved Performance:** Each server focuses on specific tasks, reducing the load on individual components.
+   - **Scalability:** Makes it easier to scale individual layers of the infrastructure.
+   - **Maintainability:** Easier to troubleshoot and optimize specific components without affecting others.
+
+---
+
+### **Diagram Notes**
+Your diagram should include:
+1. **Load Balancers (Clustered):** Connected to the web server layer.
+2. **Web Server:** Dedicated to serving static files and forwarding requests to the application server.
+3. **Application Server:** Dedicated to running the application logic.
+4. **Database Server:** Dedicated to handling and storing application data.
+
+---
+
+### **Steps to Complete**
+1. **Create the Diagram:**
+   - Show the clustered load balancers and split components with arrows indicating traffic flow.
+2. **Upload the Diagram:**
+   - Save your diagram as an image and upload it to an image hosting service (e.g., Imgur).
+   - Include the URL in the `Whiteboard Diagram` section above.
+3. **Push to GitHub:**
+   - Ensure the file is named `3-scale_up` and commit it to your repository.
+
+---
+
+Let me know if you need help creating the diagram or writing more details! 😊

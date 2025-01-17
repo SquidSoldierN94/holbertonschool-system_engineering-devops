@@ -1,0 +1,82 @@
+### **1-distributed_web_infrastructure**
+
+#### **Task Description**
+Design a three-server web infrastructure to host the website reachable via `www.foobar.com`.
+
+---
+
+### **Whiteboard Diagram**
+[Insert the link to the diagram hosted on an image hosting service, e.g., Imgur]
+
+---
+
+### **Infrastructure Description**
+
+1. **Server 1: Load Balancer**
+   - **Software:** HAProxy.
+   - **Role:** Distributes incoming traffic across the application servers to ensure high availability and load management.
+   - **Configuration:** Round-robin distribution algorithm.  
+     - **How it works:** Incoming requests are distributed sequentially across servers, ensuring equal traffic distribution.
+
+2. **Server 2: Application Server**
+   - **Software:** Nginx and application code.
+   - **Role:** Handles requests forwarded by the load balancer and processes dynamic content.  
+   - **Connection:** Communicates with the database to retrieve or store data.
+
+3. **Server 3: Database**
+   - **Software:** MySQL in a Primary-Replica (Master-Slave) setup.  
+     - **Primary Node:** Handles write requests and replicates data to the replica node.  
+     - **Replica Node:** Handles read-only requests, reducing load on the primary.
+
+4. **Additional Infrastructure Elements:**
+   - **Load Balancer Setup:**  
+     - **Type:** Active-Active setup.  
+     - **Explanation:** All application servers are active and process requests simultaneously. This increases availability and performance compared to Active-Passive, where one server remains idle until the other fails.
+   - **Database Cluster:**  
+     - **Primary-Replica Functionality:**  
+       - Write operations are sent to the primary node.  
+       - Updates are replicated to the replica node in real-time, ensuring consistency.  
+       - The application can read from the replica node to balance database load.
+
+---
+
+### **Issues with the Infrastructure**
+
+1. **Single Points of Failure (SPOF):**
+   - Load balancer: If it fails, the entire system becomes inaccessible.
+   - Database primary node: If the primary node crashes, write operations fail until the replica is promoted to primary.
+
+2. **Security Issues:**
+   - No firewall to block unauthorized access.
+   - No HTTPS, leaving traffic unencrypted and vulnerable to interception.
+
+3. **No Monitoring:**
+   - Lack of monitoring tools (e.g., Datadog, Nagios) means no alerts for performance issues, downtime, or failures.
+
+---
+
+### **Diagram Notes**
+Your diagram should show:
+1. **Load Balancer**:
+   - Connected to the two application servers.
+2. **Application Servers**:
+   - Connected to the database server.
+3. **Database Server**:
+   - Show the primary and replica nodes, indicating the replication flow.
+
+---
+
+### **Steps to Complete**
+1. **Create the Diagram**:
+   - Draw three servers:
+     - Load Balancer → Application Servers (two) → Database Server (Primary + Replica).
+   - Show the replication flow between the primary and replica database nodes.
+2. **Upload the Diagram**:
+   - Save your diagram as an image and upload it to an image hosting service (e.g., Imgur).
+   - Include the URL in the `Whiteboard Diagram` section above.
+3. **Push to GitHub**:
+   - Ensure the file is named `1-distributed_web_infrastructure` and commit it to your repository.
+
+---
+
+Let me know if you'd like help designing the diagram!

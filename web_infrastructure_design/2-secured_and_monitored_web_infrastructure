@@ -1,0 +1,87 @@
+### **2-secured_and_monitored_web_infrastructure**
+
+#### **Task Description**
+Design a secure three-server web infrastructure to host the website reachable via `www.foobar.com`.
+
+---
+
+### **Whiteboard Diagram**
+[Insert the link to the diagram hosted on an image hosting service, e.g., Imgur]
+
+---
+
+### **Infrastructure Description**
+
+1. **Firewalls (3 total):**
+   - **Purpose:** Protect the infrastructure by filtering unauthorized traffic.
+   - **Placement:**
+     - Between the Internet and the Load Balancer.
+     - Between the Load Balancer and the Application Servers.
+     - Between the Application Servers and the Database.
+   - **Role:** Firewalls block malicious or unauthorized traffic, providing an additional layer of security.
+
+2. **SSL Certificate:**
+   - **Purpose:** Encrypts traffic between the user's browser and the website.
+   - **Why HTTPS:** Ensures data confidentiality and integrity, prevents eavesdropping and man-in-the-middle attacks.
+
+3. **Monitoring Clients (3 total):**
+   - **Placement:** On each server (Load Balancer, Application Servers, Database Server).
+   - **Purpose:** Collect metrics such as CPU usage, memory usage, response time, and web server queries per second (QPS).
+   - **Monitoring Tool:** Tools like Sumologic, Datadog, or Nagios gather logs and metrics to analyze system performance and detect anomalies.
+   - **How Data is Collected:** Monitoring clients send real-time logs and metrics to a centralized monitoring service for aggregation and visualization.
+
+4. **Additional Infrastructure Elements:**
+   - **Load Balancer:**
+     - Terminating SSL at this level reduces the load on application servers by decrypting HTTPS traffic.
+   - **Database Setup:** MySQL with a Primary-Replica cluster:
+     - **Primary Node:** Handles write operations.
+     - **Replica Node:** Handles read operations and provides redundancy.
+
+---
+
+### **Issues with the Infrastructure**
+
+1. **SSL Termination at the Load Balancer:**
+   - **Problem:** Traffic between the Load Balancer and Application Servers remains unencrypted, which can be intercepted if not properly secured (e.g., private network, additional encryption).
+
+2. **Single Write-Capable MySQL Server:**
+   - **Problem:** The single write server is a bottleneck. If it fails, all write operations stop, causing downtime.
+
+3. **Servers with All the Same Components:**
+   - **Problem:** This setup increases complexity and creates redundancy where unnecessary. A more modular design is preferable, with each server focusing on specific roles (e.g., application server, database server).
+
+---
+
+### **Monitoring Web Server QPS**
+
+1. **What to Monitor:**
+   - Queries per second (QPS) provide insight into how many requests your server handles per second.
+   
+2. **How to Monitor:**
+   - Use monitoring tools (e.g., Datadog or Nagios) to:
+     - Install monitoring agents on web servers.
+     - Track logs and server metrics related to requests.
+     - Set alerts for abnormal QPS to identify traffic spikes or potential attacks.
+
+---
+
+### **Diagram Notes**
+Your diagram should include:
+1. **Firewalls:** Positioned between each layer (Internet → Load Balancer → Application Servers → Database).
+2. **SSL Certificate:** Applied at the Load Balancer to encrypt traffic.
+3. **Monitoring Clients:** Depicted on all servers, connecting to a centralized monitoring system.
+
+---
+
+### **Steps to Complete**
+1. **Create the Diagram:**
+   - Draw the infrastructure with firewalls, SSL encryption, monitoring clients, and labeled servers.
+2. **Upload the Diagram:**
+   - Save your diagram as an image and upload it to an image hosting service (e.g., Imgur).
+   - Include the URL in the `Whiteboard Diagram` section above.
+3. **Push to GitHub:**
+   - Ensure the file is named `2-secured_and_monitored_web_infrastructure` and commit it to your repository.
+
+---
+
+Let me know if you'd like assistance creating the diagram!
